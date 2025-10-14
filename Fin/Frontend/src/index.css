@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');@import "tailwindcss";
+
+@theme{
+    --font-display: 'Montserrat', sans-serif;
+    --breakpoint-3xl: 1920px;
+    --color-primary: #875cf5;
+}
+
+:root {
+    /* Light theme variables */
+    --bg-color-light: #ffffff;
+    --text-color-light: #0e0d0d;
+    --text-primary-color: #333333;
+    --text-secondary-color: #676363;
+    --card-bg-light: #ffffff;
+    --border-color-light: rgba(180, 186, 199, 0.5);
+    --input-bg-light: #f3f4f6;
+    --hover-bg-light: #a6acb3;
+
+    /* Dark theme variables */
+    --bg-color-dark: #1f1e1e;
+    --text-color-dark: #ffffff;
+    --text-primary-color-dark: #ffffff;
+    --text-secondary-color-dark: #ffffff;
+    --card-bg-dark: #1c1b1b;
+    --border-color-dark: rgba(75, 85, 99, 0.5);
+    --input-bg-dark: #374151;
+    --hover-bg-dark: #374151;
+}
+
+@layer base{
+    html {
+        font-family: var(--font-display);
+    }
+    body {
+        background-color: var(--bg-color-light);
+        color: var(--text-color-light);
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark {
+        background-color: var(--bg-color-dark);
+        color: var(--text-color-dark);
+    }
+    
+    body.dark {
+        --text-primary-color: var(--text-primary-color-dark);
+        --text-secondary-color: var(--text-secondary-color-dark);
+    }
+}
+
+.input-box {
+    @apply w-full flex justify-between gap-3 text-sm rounded px-4 py-3 mb-4 mt-3 outline-none;
+    background-color: var(--input-bg-light);
+    border: 1px solid var(--border-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark .input-box {
+    background-color: var(--input-bg-dark);
+    border-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+.btn-primary{
+    @apply w-full text-sm font-medium text-white bg-violet-500 shadow-lg shadow-purple-600/5 p-[10px] rounded-md my-1 hover:bg-purple-600/15 hover:text-purple-600
+}
+
+.card{
+    @apply p-6 rounded-2xl shadow-md border;
+    background-color: var(--card-bg-light);
+    border-color: var(--border-color-light);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .card {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.card-btn{
+    @apply flex items-center gap-3 text-[12px] font-medium px-4 py-1.5 rounded-lg border cursor-pointer;
+    background-color: var(--hover-bg-light);
+    border-color: var(--border-color-light);
+    color: var(--text-color-light);
+}
+
+body.dark .card-btn {
+    background-color: var(--hover-bg-dark);
+    border-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+.add-btn{
+    @apply flex items-center gap-1.5 text-xs md:text-sm font-medium text-purple-600 whitespace-nowrap border rounded-lg px-4 py-2 cursor-pointer;
+    background-color: rgba(135, 92, 245, 0.1);
+    border-color: rgba(135, 92, 245, 0.2);
+}
+
+body.dark .add-btn {
+    background-color: rgba(135, 92, 245, 0.2);
+    border-color: rgba(135, 92, 245, 0.3);
+}
+
+.add-btn-fill{
+    @apply text-white bg-primary
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    @apply flex items-center justify-center rounded-full p-2 cursor-pointer transition-all duration-300 ease-in-out;
+    background-color: var(--card-bg-light);
+    border: 1px solid var(--border-color-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .theme-toggle {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}

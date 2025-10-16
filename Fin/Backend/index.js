@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+dotenv.config();
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
@@ -7,10 +8,11 @@ const authRoutes = require("./routes/authRoutes");
 const incomeRoutes = require("./routes/incomeRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const passport = require('passport');
+require('./config/passport-setup');
 
 
 const app = express();
-dotenv.config();
 
 app.use(cors({
     origin: process.env.CLIENT_URL || '*',
@@ -20,9 +22,14 @@ app.use(cors({
 
 app.use(express.json());
 
+// Initialize Passport (stateless, no sessions)
+app.use(passport.initialize());
+
 connectDB(); 
 
 app.use("/api/v1/auth",authRoutes);
+// Alias to support Google OAuth callbacks without /api prefix
+app.use("/auth", authRoutes);
 app.use("/api/v1/income",incomeRoutes);
 app.use("/api/v1/expense",expenseRoutes);
 app.use("/api/v1/dashboard",dashboardRoutes);

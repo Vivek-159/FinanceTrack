@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Authlayout from '../../components/layout/Authlayout';
 import { Link, useNavigate } from 'react-router-dom';
 import Input from '../../components/inputs/Input';
 import { validateEmail } from '../../utils/helper';
 import axiosInstance from '../../utils/axiosinstance';
-import { API_PATHS } from '../../utils/apiPaths';
+import { API_PATHS, BASE_URL } from '../../utils/apiPaths';
 import { UserContext } from '../../context/Usercontext';
 
 const Login = () => {
@@ -58,6 +58,20 @@ const Login = () => {
     }
   }
 
+  // Handle token returned from Google OAuth redirect
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if (token) {
+      localStorage.setItem('token', token);
+      navigate('/dashboard');
+    }
+  }, [navigate]);
+
+  const handleGoogleLogin = () => {
+    window.location.href = `${BASE_URL}/auth/google`;
+  };
+
   return (
     <Authlayout>
       <div className='lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center'>
@@ -85,6 +99,10 @@ const Login = () => {
 
           <button type="submit" className='btn-primary'>
             LogIn
+          </button>
+
+          <button type="button" onClick={handleGoogleLogin} className='btn-primary mt-2 bg-red-500 hover:bg-red-600'>
+            Login with Google
           </button>
 
           <p className='text-[13px] text-slate-800 mt-3 '>Don't you Have an Account ?{" "} <Link className="font-medium text-primary underline" to="/signUp" >SignUp</Link></p>

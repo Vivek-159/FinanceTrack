@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Signup from './pages/auth/Signup';
 import Login from './pages/auth/Login';
@@ -44,7 +44,23 @@ function App() {
 export default App;
 
 const Root = () => {
-  const isAuthenticated = !!localStorage.getItem('token');
+  const [processing, setProcessing] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+
+  // Capture token from Google OAuth redirect if present, then redirect to dashboard
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if (token) {
+      localStorage.setItem('token', token);
+      // Clean the URL so we don't repeatedly process the token
+      window.history.replaceState({}, '', '/');
+      setIsAuthenticated(true);
+    }
+    setProcessing(false);
+  }, []);
+
+  if (processing) return null;
 
   return isAuthenticated ? (
     <Navigate to={'/dashboard'} />

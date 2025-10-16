@@ -13,7 +13,12 @@ const UserSchema = new mongoose.Schema({
     },
     password: {
         type:String,
-        required:true
+        required:false
+    },
+    googleId: {
+        type: String,
+        default: null,
+        index: true
     },
     profileimageurl: {
         type:String,
@@ -23,7 +28,7 @@ const UserSchema = new mongoose.Schema({
 
 //hash password before saving
 UserSchema.pre('save', async function (next) {
-    if(!this.isModified('password')) return next();
+    if(!this.isModified('password') || !this.password) return next();
     this.password = await bcrypt.hash(this.password, 10);
     next();
 });

@@ -1,7 +1,4 @@
-export const BASE_URL =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:5000'
-    : 'https://financetrack-u06i.onrender.com';
+export const BASE_URL="https://financetrack-backend.onrender.com"
 
 
 export const API_PATHS= {

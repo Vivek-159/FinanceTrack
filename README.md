@@ -3,7 +3,7 @@ FinanceTrack
 FinanceTrack — using GenAI with in-built finance adviser.
 
 
-
+----------------------------------------------------------------------------------------------
 About The Project
 
 FinanceTrack is a web application designed to help users track their finances and get insights via an integrated AI-powered adviser.
@@ -21,6 +21,10 @@ Responsive UI for both desktop and mobile
 
 Secure data management and easy export/back-up functionality
 
+
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 Technologies Used
 
 Frontend:React, JavaScript, CSS, HTML
@@ -35,7 +39,7 @@ Other Tools: (list build tools, bundlers, state management etc.)
 
 Deployment: (Render)
 
-
+-----------------------------------------------------------------------------------------------------------------------------
 
 Getting Started
 Prerequisites
@@ -62,7 +66,6 @@ npm install
 
 
 
-
 Create a .env file and configure environment variables (example):
 
 API_KEY=your_genai_api_key  
@@ -74,14 +77,14 @@ Start the development server
 npm run dev  
 
 
-
+------------------------------------------------------------------------------------------------------
 
 
 Open your browser and navigate to http://localhost:3000 (or another port if configured).
 
 
 
-
+-------------------------------------------------------------------------------------------------------
 
 Usage
 
@@ -97,7 +100,7 @@ Export your data or sync to your backup service
 
 
 
-
+----------------------------------------------------------------------------------------------------------------
 
 Project Structure
 
@@ -108,12 +111,14 @@ Here’s a high-level overview of the project structure:
 |-- /src
     |-- /components
     |-- /pages
-    |-- /services
+    |-- /services																													
     |-- /utils
 |-- .env
 |-- package.json
 |-- README.md
 
+
+------------------------------------------------------------------------------------------------------------------
 
 
 Project Link: https://github.com/Vivek-159/FinanceTrack

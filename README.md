@@ -29,7 +29,7 @@ Technologies Used
 
 Frontend:React, JavaScript, CSS, HTML
 
-Backend: (if applicable) Node.js, Express (or your chosen backend)
+Backend:Node.js, Express 
 
 AI/GenAI: (describe how you integrate GenAI – Gemini API)
 
@@ -80,7 +80,7 @@ npm run dev
 ------------------------------------------------------------------------------------------------------
 
 
-Open your browser and navigate to http://localhost:3000 (or another port if configured).
+Open your browser and navigate to http://localhost:5173 .
 
 
 
